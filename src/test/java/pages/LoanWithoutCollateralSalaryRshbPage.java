@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import static org.testng.Assert.assertEquals;
 
-public class CreditsPage extends BasePage {
+public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
     private static final String CREDITS = "//a[contains(@class, \"b-page-head-menu-item-nobanner link\") and text() = \"Кредиты\"]";
     private static final String LOAN_WITHOUT_COLLATERAL = "//a[contains(@class, \"linkip\") and text() = \"Потребительский кредит без обеспечения\"]";
     private static final String BUTTON_ANNUITY = "//button[contains(@class,\"menu-switch__item menu-switch__item--selected\") and text()=\"Аннуитетный\"]";
@@ -25,7 +25,7 @@ public class CreditsPage extends BasePage {
     private static final String CREDIT_PERIOD = "60";
 
 
-    public CreditsPage creditCalculation() {
+    public LoanWithoutCollateralSalaryRshbPage creditCalculation() {
         click(By.xpath(CREDITS));
         Actions actions = new Actions(driver);
         WebElement loanWithoutCollateral = driver.findElement(By.xpath(LOAN_WITHOUT_COLLATERAL));
@@ -37,14 +37,14 @@ public class CreditsPage extends BasePage {
         return this;
     }
 
-    public CreditsPage creditSumSet() {
+    public LoanWithoutCollateralSalaryRshbPage creditSumSet() {
         clearInput(By.xpath(FIELD_CREDIT_SUM));
         sendKeys(By.xpath(FIELD_CREDIT_SUM), CREDIT_SUM.substring(0, (CREDIT_SUM.length() - 1)));
         click(By.xpath(FIELD_CALCULATOR));
         return this;
     }
 
-    public CreditsPage creditPeriodSet() {
+    public LoanWithoutCollateralSalaryRshbPage creditPeriodSet() {
         Actions actions = new Actions(driver);
         WebElement fieldCreditPeriod = driver.findElement(By.xpath(FIELD_CREDIT_PERIOD));
         actions.moveToElement(fieldCreditPeriod).click().build().perform();
@@ -54,7 +54,7 @@ public class CreditsPage extends BasePage {
         return this;
     }
 
-    public CreditsPage choiceCheckboxes() {
+    public LoanWithoutCollateralSalaryRshbPage choiceCheckboxes() {
         WebElement checkboxRshbSalary = driver.findElement(By.xpath(CHECKBOX_RSHB_SALARY));
         Actions actions = new Actions(driver);
         actions.moveToElement(checkboxRshbSalary).build().perform();
@@ -71,7 +71,7 @@ public class CreditsPage extends BasePage {
         return this;
     }
 
-    public CreditsPage valuesCheck() {
+    public LoanWithoutCollateralSalaryRshbPage valuesCheck() {
         assertEquals(ACTUAL_PAY_VALUE, driver.findElement(By.xpath(FIELD_PAY)).getText());
         assertEquals(ACTUAL_RATE_VALUE, driver.findElement(By.xpath(FIELD_RATE)).getText());
         return this;
