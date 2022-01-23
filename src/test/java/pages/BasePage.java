@@ -12,8 +12,6 @@ import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.AssertJUnit.assertTrue;
-
 public class BasePage {
 
     public static WebDriver driver;
@@ -34,42 +32,29 @@ public class BasePage {
     }
 
 
-    //Wait Wrapper Method
     public void waitVisibility(By elementBy) {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
     }
 
-    //openSite Method
     public void openSite(String siteUrl) {
         driver.get(siteUrl);
     }
 
-    //Click Method
     public void click(By elementBy) {
         waitVisibility(elementBy);
         driver.findElement(elementBy).click();
     }
 
-    //sendKeys Method
     public void sendKeys(By elementBy, String number) {
         waitVisibility(elementBy);
         driver.findElement(elementBy).sendKeys(number);
     }
 
-    //clearInput Method
     public void clearInput(By elementBy) {
-//        wait.until(ExpectedConditions.elementToBeClickable(elementBy)).click();
-//        driver.findElement(elementBy).clear();
         WebElement clearField = driver.findElement(elementBy);
         wait.until(ExpectedConditions.elementToBeClickable(elementBy)).click();
         clearField.sendKeys(Keys.CONTROL + "a");
         clearField.sendKeys(Keys.DELETE);
-    }
-
-    //is Element Displayed
-    public void isElementDisplayed(By elementBy) {
-        waitVisibility(elementBy);
-        assertTrue(driver.findElement(elementBy).isDisplayed());
     }
 
 

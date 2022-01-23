@@ -6,41 +6,45 @@ import pages.*;
 
 public class RshbTest extends BasePage {
     MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-    LoanWithoutCollateralSalaryRshbPage loanWithoutCollateralSalaryRshbPage = PageFactory.initElements(driver, LoanWithoutCollateralSalaryRshbPage.class);
-    LoanWithoutCollateralSalaryRshbInsuranceProtectionPage loanWithoutCollateralSalaryRshbInsuranceProtectionPage = PageFactory.initElements(driver, LoanWithoutCollateralSalaryRshbInsuranceProtectionPage.class);
-    DepositsAndSavingsPage depositsAndSavingsPage = PageFactory.initElements(driver, DepositsAndSavingsPage.class);
+    LoanWithoutCollateralSalaryRshbPage lwcsr = PageFactory.initElements(driver, LoanWithoutCollateralSalaryRshbPage.class);
+    LoanWithoutCollateralSalaryRshbInsuranceProtectionPage lwcsrip = PageFactory.initElements(driver, LoanWithoutCollateralSalaryRshbInsuranceProtectionPage.class);
+    DepositsAndSavingsPage ds = PageFactory.initElements(driver, DepositsAndSavingsPage.class);
+
     @Test
     public void openSiteTest() {
         mainPage.smokeMainPage();
     }
 
-    //Test case №1
     @Test
     public void loanWithoutCollateralSalaryRshbTest() {
-        mainPage.mainPagePrivatePerson();
-        loanWithoutCollateralSalaryRshbPage.creditCalculation()
+        mainPage
+                .mainPagePrivatePerson();
+        lwcsr
+                .creditCalculation()
                 .creditSumSet()
                 .creditPeriodSet()
                 .choiceCheckboxes()
                 .valuesCheck();
     }
 
-    //Test case №2
     @Test
-    public void loanWithoutCollateralSalaryRshbInsuranceProtectionTest(){
-        mainPage.mainPagePrivatePerson();
-        loanWithoutCollateralSalaryRshbInsuranceProtectionPage.creditCalculation()
+    public void loanWithoutCollateralSalaryRshbInsuranceProtectionTest() {
+        mainPage
+                .mainPagePrivatePerson();
+        lwcsrip
+                .creditCalculation()
                 .creditSumSet()
                 .creditPeriodSet()
                 .choiceCheckboxes()
                 .valuesCheck();
     }
 
-    //Test case №3
     @Test
-    public void depositAndSavingsTest(){
-        mainPage.mainPagePrivatePerson();
-        depositsAndSavingsPage.depositsAndSavingsGet()
+    public void depositAndSavingsTest() {
+        mainPage
+                .mainPagePrivatePerson();
+        ds
+                .depositsAndSavingsGet()
                 .tableCheck();
     }
 

@@ -15,8 +15,9 @@ public class MainPage extends BasePage {
 
     public MainPage mainPagePrivatePerson() {
         openSite(SITE_URL);
-        if (driver.findElement(By.xpath(COOKIE)).isDisplayed())
+        if (driver.findElement(By.xpath(COOKIE)).isDisplayed()) {
             click(By.xpath(COOKIE));
+        }
         click(By.xpath(LINK_PRIVATE_PERSON));
         return this;
     }

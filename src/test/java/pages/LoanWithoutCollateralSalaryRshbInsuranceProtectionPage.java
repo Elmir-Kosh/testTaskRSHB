@@ -19,8 +19,8 @@ public class LoanWithoutCollateralSalaryRshbInsuranceProtectionPage extends Base
     private static final String CHECKBOX_RSHB_SALARY = "//input[@class=\"ant-checkbox-input\"]";
     private static final String CHECKBOX_BUDGET_ORGANIZATION_SALARY = "//div[@class=\"loan-calculator__switch-block\"][2]//input[@class=\"ant-checkbox-input\"]";
     private static final String CHECKBOX_INSURANCE_PROTECTION = "//div[@class=\"loan-calculator__switch-block\"][3]//input[@class=\"ant-checkbox-input\"]";
-    private static final String ACTUAL_PAY_VALUE = "49 385 ₽";
-    private static final String ACTUAL_RATE_VALUE = "6.9%";
+    private static final String ACTUAL_PAY_VALUE = "51 171 ₽";
+    private static final String ACTUAL_RATE_VALUE = "8.4%";
     private static final String CREDIT_SUM = "2500000";
     private static final String CREDIT_PERIOD = "60";
 
