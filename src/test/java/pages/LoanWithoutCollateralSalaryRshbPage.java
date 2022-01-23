@@ -1,8 +1,5 @@
 package pages;
 
-import com.google.common.base.Verify;
-import com.google.common.base.VerifyException;
-import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -26,6 +23,7 @@ public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
     private static final String ACTUAL_RATE_VALUE = "12.4%";
     private static final String CREDIT_SUM = "2500000";
     private static final String CREDIT_PERIOD = "60";
+    private Object TakesScreenshot;
 
 
     public LoanWithoutCollateralSalaryRshbPage creditCalculation() {
@@ -75,25 +73,11 @@ public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
     }
 
     public LoanWithoutCollateralSalaryRshbPage valuesCheck() {
-//        Verify.verify(ACTUAL_RATE_VALUE.equals(driver.findElement(By.xpath(FIELD_RATE)).getText()), "wrong rate");
-//        Verify.verify(ACTUAL_PAY_VALUE.equals(driver.findElement(By.xpath(FIELD_PAY)).getText()), "wrong pay");
-        try {
-
-            assertEquals(ACTUAL_PAY_VALUE, driver.findElement(By.xpath(FIELD_PAY)).getText());
-            Assert.fail( "Should have thrown an exception" );
-
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
-//        try {
-//            assertEquals(ACTUAL_RATE_VALUE, driver.findElement(By.xpath(FIELD_RATE)).getText());
-//        }
-//        catch (Exception d){
-//            System.out.println(d);
-//        }
+        assertEquals(ACTUAL_RATE_VALUE, driver.findElement(By.xpath(FIELD_RATE)).getText());
+        assertEquals(ACTUAL_PAY_VALUE, driver.findElement(By.xpath(FIELD_PAY)).getText());
         return this;
     }
+
 
 }
 
