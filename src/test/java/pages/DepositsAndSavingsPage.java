@@ -16,6 +16,7 @@ public class DepositsAndSavingsPage extends BasePage {
     private static final String EXPECTED_ULTRA = "//*[@id=\"deposit_451946\"]//following::td[text()=\"0.01%\"][1]";
     private static final String EXPECTED_PREMIUM = "//*[@id=\"deposit_451946\"]//following::td[text()=\"0.01%\"][2]";
     private static final String EXPECTED_BEFORE_DEMAND = "//*[@id=\"deposit_451946\"]//following::td[text()=\"0.01%\"][1]";
+
     private static final String ACTUAL_MY_BENEFIT = "5.5%";
     private static final String ACTUAL_MY_PIGGY_BANK = "5%";
     private static final String ACTUAL_MY_BANK_ACCOUNT = "4%";
@@ -23,7 +24,9 @@ public class DepositsAndSavingsPage extends BasePage {
     private static final String ACTUAL_PREMIUM = "0.01%";
     private static final String ACTUAL_BEFORE_DEMAND = "0.01%";
 
-
+    /**
+     * переход на страницу "расчет доходности по сбережениям"
+     */
     public DepositsAndSavingsPage depositsAndSavingsGet() {
         click(By.xpath(DEPOSITS_AND_SAVINGS));
         Actions actions = new Actions(driver);
@@ -34,6 +37,9 @@ public class DepositsAndSavingsPage extends BasePage {
         return this;
     }
 
+    /**
+     * проверка значений в таблице "Вклады и сбережения"
+     */
     public DepositsAndSavingsPage tableCheck() {
         Actions actions = new Actions(driver);
         WebElement myBenefit = driver.findElement(By.xpath(EXPECTED_MY_BENEFIT));

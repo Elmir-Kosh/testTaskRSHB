@@ -7,12 +7,17 @@ public class MainPage extends BasePage {
     private static final String LINK_PRIVATE_PERSON = "//a[@class=\"header__section-link header__section-link_active\"]";
     private static final String COOKIE = "//button[@class=\"btn-standart\"]";
 
-
+    /**
+     * переход на сайт
+     */
     public MainPage smokeMainPage() {
         openSite(SITE_URL);
         return this;
     }
 
+    /**
+     * переход на страницу "Частным лицам"
+     */
     public MainPage mainPagePrivatePerson() {
         openSite(SITE_URL);
         if (driver.findElement(By.xpath(COOKIE)).isDisplayed()) {

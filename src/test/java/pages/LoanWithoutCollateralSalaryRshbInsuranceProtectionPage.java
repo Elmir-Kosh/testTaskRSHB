@@ -19,12 +19,15 @@ public class LoanWithoutCollateralSalaryRshbInsuranceProtectionPage extends Base
     private static final String CHECKBOX_RSHB_SALARY = "//input[@class=\"ant-checkbox-input\"]";
     private static final String CHECKBOX_BUDGET_ORGANIZATION_SALARY = "//div[@class=\"loan-calculator__switch-block\"][2]//input[@class=\"ant-checkbox-input\"]";
     private static final String CHECKBOX_INSURANCE_PROTECTION = "//div[@class=\"loan-calculator__switch-block\"][3]//input[@class=\"ant-checkbox-input\"]";
+
     private static final String ACTUAL_PAY_VALUE = "51 171 ₽";
     private static final String ACTUAL_RATE_VALUE = "8.4%";
     private static final String CREDIT_SUM = "2500000";
     private static final String CREDIT_PERIOD = "60";
 
-
+    /**
+     * переходит к кредитному калькулятору
+     */
     public LoanWithoutCollateralSalaryRshbInsuranceProtectionPage creditCalculation() {
         click(By.xpath(CREDITS));
         Actions actions = new Actions(driver);
@@ -37,6 +40,9 @@ public class LoanWithoutCollateralSalaryRshbInsuranceProtectionPage extends Base
         return this;
     }
 
+    /**
+     * ввод суммы кредита
+     */
     public LoanWithoutCollateralSalaryRshbInsuranceProtectionPage creditSumSet() {
         clearInput(By.xpath(FIELD_CREDIT_SUM));
         sendKeys(By.xpath(FIELD_CREDIT_SUM), CREDIT_SUM.substring(0, (CREDIT_SUM.length() - 1)));
@@ -44,6 +50,9 @@ public class LoanWithoutCollateralSalaryRshbInsuranceProtectionPage extends Base
         return this;
     }
 
+    /**
+     * ввод срока кредита
+     */
     public LoanWithoutCollateralSalaryRshbInsuranceProtectionPage creditPeriodSet() {
         Actions actions = new Actions(driver);
         WebElement fieldCreditPeriod = driver.findElement(By.xpath(FIELD_CREDIT_PERIOD));
@@ -54,6 +63,9 @@ public class LoanWithoutCollateralSalaryRshbInsuranceProtectionPage extends Base
         return this;
     }
 
+    /**
+     * выбор чекбоксов
+     */
     public LoanWithoutCollateralSalaryRshbInsuranceProtectionPage choiceCheckboxes() {
         WebElement checkboxRshbSalary = driver.findElement(By.xpath(CHECKBOX_RSHB_SALARY));
         Actions actions = new Actions(driver);
@@ -71,6 +83,9 @@ public class LoanWithoutCollateralSalaryRshbInsuranceProtectionPage extends Base
         return this;
     }
 
+    /**
+     * проверка кредитной ставки и ежемесячного платежа
+     */
     public LoanWithoutCollateralSalaryRshbInsuranceProtectionPage valuesCheck() {
         assertEquals(ACTUAL_PAY_VALUE, driver.findElement(By.xpath(FIELD_PAY)).getText());
         assertEquals(ACTUAL_RATE_VALUE, driver.findElement(By.xpath(FIELD_RATE)).getText());
