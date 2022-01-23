@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -40,24 +40,24 @@ public class BasePage {
     }
 
     //openSite Method
-    public void openSite(String SITE_URL){
-        driver.get(SITE_URL);
+    public void openSite(String siteUrl) {
+        driver.get(siteUrl);
     }
 
     //Click Method
-    public void click(By elementBy){
+    public void click(By elementBy) {
         waitVisibility(elementBy);
         driver.findElement(elementBy).click();
     }
 
     //sendKeys Method
-    public void sendKeys(By elementBy, String number){
+    public void sendKeys(By elementBy, String number) {
         waitVisibility(elementBy);
         driver.findElement(elementBy).sendKeys(number);
     }
 
     //clearInput Method
-    public void clearInput(By elementBy){
+    public void clearInput(By elementBy) {
 //        wait.until(ExpectedConditions.elementToBeClickable(elementBy)).click();
 //        driver.findElement(elementBy).clear();
         WebElement clearField = driver.findElement(elementBy);
@@ -67,7 +67,7 @@ public class BasePage {
     }
 
     //is Element Displayed
-    public void isElementDisplayed(By elementBy){
+    public void isElementDisplayed(By elementBy) {
         waitVisibility(elementBy);
         assertTrue(driver.findElement(elementBy).isDisplayed());
     }

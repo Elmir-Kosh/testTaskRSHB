@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -27,23 +27,36 @@ public class CreditsPage extends BasePage {
 
     public CreditsPage creditCalculation() {
         click(By.xpath(CREDITS));
-        WebElement loanWithoutCollateral = driver.findElement(By.xpath(LOAN_WITHOUT_COLLATERAL));
         Actions actions = new Actions(driver);
+        WebElement loanWithoutCollateral = driver.findElement(By.xpath(LOAN_WITHOUT_COLLATERAL));
         actions.moveToElement(loanWithoutCollateral).click().build().perform();
         if (driver.findElement(By.xpath(COOKIE)).isDisplayed())
             click(By.xpath(COOKIE));
         WebElement buttonAnnuity = driver.findElement(By.xpath(BUTTON_ANNUITY));
         actions.moveToElement(buttonAnnuity).click().build().perform();
+        return this;
+    }
+
+    public CreditsPage creditSumSet() {
         clearInput(By.xpath(FIELD_CREDIT_SUM));
         sendKeys(By.xpath(FIELD_CREDIT_SUM), CREDIT_SUM.substring(0, (CREDIT_SUM.length() - 1)));
         click(By.xpath(FIELD_CALCULATOR));
+        return this;
+    }
+
+    public CreditsPage creditPeriodSet() {
+        Actions actions = new Actions(driver);
         WebElement fieldCreditPeriod = driver.findElement(By.xpath(FIELD_CREDIT_PERIOD));
         actions.moveToElement(fieldCreditPeriod).click().build().perform();
         clearInput(By.xpath(FIELD_CREDIT_PERIOD));
         sendKeys(By.xpath(FIELD_CREDIT_PERIOD), CREDIT_PERIOD.substring(0, (CREDIT_PERIOD.length() - 1)));
         click(By.xpath(FIELD_CALCULATOR));
-        //checkbox choice
+        return this;
+    }
+
+    public CreditsPage choiceCheckboxes() {
         WebElement checkboxRshbSalary = driver.findElement(By.xpath(CHECKBOX_RSHB_SALARY));
+        Actions actions = new Actions(driver);
         actions.moveToElement(checkboxRshbSalary).build().perform();
         if (!checkboxRshbSalary.isSelected())
             checkboxRshbSalary.click();
@@ -55,20 +68,14 @@ public class CreditsPage extends BasePage {
         actions.moveToElement(checkboxInsuranceProtection).build().perform();
         if (checkboxInsuranceProtection.isSelected())
             checkboxInsuranceProtection.click();
-//        List<WebElement> checkboxes = null;
-//        checkboxes = driver.findElements(By.xpath(CHECKBOXES));
-//        if (!checkboxes.get(0).isSelected())
-//            click(By.xpath(String.valueOf(checkboxes.get(0))));
-//        if (checkboxes.get(1).isSelected())
-//            click(By.xpath(String.valueOf(checkboxes.get(1))));
-//        if (checkboxes.get(2).isSelected())
-//            click(By.xpath(String.valueOf(checkboxes.get(2))));
-//        Assert.assertEquals(52383, FIELD_PAY, "wrong pay");
-        //      Assert.assertEquals(9.4, FIELD_STAVKA, "wrong stavka");
-
-        assertEquals(ACTUAL_PAY_VALUE, driver.findElement(By.xpath(FIELD_PAY)).getText());
-        assertEquals(ACTUAL_RATE_VALUE, driver.findElement(By.xpath(FIELD_RATE)).getText());
-
         return this;
     }
+
+    public CreditsPage valuesCheck() {
+        assertEquals(ACTUAL_PAY_VALUE, driver.findElement(By.xpath(FIELD_PAY)).getText());
+        assertEquals(ACTUAL_RATE_VALUE, driver.findElement(By.xpath(FIELD_RATE)).getText());
+        return this;
+    }
+
 }
+

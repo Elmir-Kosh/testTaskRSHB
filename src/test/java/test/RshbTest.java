@@ -1,10 +1,10 @@
 package test;
 
-import Pages.BasePage;
-import Pages.CreditsPage;
-import Pages.MainPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
+import pages.BasePage;
+import pages.CreditsPage;
+import pages.MainPage;
 
 public class RshbTest extends BasePage {
     MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
@@ -16,9 +16,13 @@ public class RshbTest extends BasePage {
     }
 
     @Test
-    public void mainPagePrivatePersonTest(){
+    public void mainPagePrivatePersonTest() {
         mainPage.mainPagePrivatePerson();
-        creditsPage.creditCalculation();
+        creditsPage.creditCalculation()
+                .creditSumSet()
+                .creditPeriodSet()
+                .choiceCheckboxes()
+                .valuesCheck();
     }
 
 }

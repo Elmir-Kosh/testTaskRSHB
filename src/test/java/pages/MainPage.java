@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 
@@ -12,6 +12,7 @@ public class MainPage extends BasePage {
         openSite(SITE_URL);
         return this;
     }
+
     public MainPage mainPagePrivatePerson() {
         openSite(SITE_URL);
         if (driver.findElement(By.xpath(COOKIE)).isDisplayed())
