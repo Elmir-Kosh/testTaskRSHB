@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-public class BasePage {
+public class BaseTest {
 
     public static WebDriver driver;
     public static WebDriverWait wait;

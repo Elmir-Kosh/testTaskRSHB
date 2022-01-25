@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import static org.testng.Assert.assertEquals;
 
-public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
+public class LoanWithoutCollateralSalaryRshbInsuranceProtectionTest extends BaseTest {
     private static final String CREDITS = "//a[contains(@class, \"b-page-head-menu-item-nobanner link\") and text() = \"Кредиты\"]";
     private static final String LOAN_WITHOUT_COLLATERAL = "//a[contains(@class, \"linkip\") and text() = \"Потребительский кредит без обеспечения\"]";
     private static final String BUTTON_ANNUITY = "//button[contains(@class,\"menu-switch__item menu-switch__item--selected\") and text()=\"Аннуитетный\"]";
@@ -20,15 +20,15 @@ public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
     private static final String CHECKBOX_BUDGET_ORGANIZATION_SALARY = "//div[@class=\"loan-calculator__switch-block\"][2]//input[@class=\"ant-checkbox-input\"]";
     private static final String CHECKBOX_INSURANCE_PROTECTION = "//div[@class=\"loan-calculator__switch-block\"][3]//input[@class=\"ant-checkbox-input\"]";
 
-    private static final String ACTUAL_PAY_VALUE = "56 118 ₽";
-    private static final String ACTUAL_RATE_VALUE = "12.4%";
+    private static final String ACTUAL_PAY_VALUE = "51 171 ₽";
+    private static final String ACTUAL_RATE_VALUE = "8.4%";
     private static final String CREDIT_SUM = "2500000";
     private static final String CREDIT_PERIOD = "60";
 
     /**
      * переходит к кредитному калькулятору
      */
-    public LoanWithoutCollateralSalaryRshbPage creditCalculation() {
+    public LoanWithoutCollateralSalaryRshbInsuranceProtectionTest creditCalculation() {
         click(By.xpath(CREDITS));
         Actions actions = new Actions(driver);
         WebElement loanWithoutCollateral = driver.findElement(By.xpath(LOAN_WITHOUT_COLLATERAL));
@@ -43,7 +43,7 @@ public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
     /**
      * ввод суммы кредита
      */
-    public LoanWithoutCollateralSalaryRshbPage creditSumSet() {
+    public LoanWithoutCollateralSalaryRshbInsuranceProtectionTest creditSumSet() {
         clearInput(By.xpath(FIELD_CREDIT_SUM));
         sendKeys(By.xpath(FIELD_CREDIT_SUM), CREDIT_SUM.substring(0, (CREDIT_SUM.length() - 1)));
         click(By.xpath(FIELD_CALCULATOR));
@@ -53,7 +53,7 @@ public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
     /**
      * ввод срока кредита
      */
-    public LoanWithoutCollateralSalaryRshbPage creditPeriodSet() {
+    public LoanWithoutCollateralSalaryRshbInsuranceProtectionTest creditPeriodSet() {
         Actions actions = new Actions(driver);
         WebElement fieldCreditPeriod = driver.findElement(By.xpath(FIELD_CREDIT_PERIOD));
         actions.moveToElement(fieldCreditPeriod).click().build().perform();
@@ -66,7 +66,7 @@ public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
     /**
      * выбор чекбоксов
      */
-    public LoanWithoutCollateralSalaryRshbPage choiceCheckboxes() {
+    public LoanWithoutCollateralSalaryRshbInsuranceProtectionTest choiceCheckboxes() {
         WebElement checkboxRshbSalary = driver.findElement(By.xpath(CHECKBOX_RSHB_SALARY));
         Actions actions = new Actions(driver);
         actions.moveToElement(checkboxRshbSalary).build().perform();
@@ -78,7 +78,7 @@ public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
             checkboxBudgetOrganizationSalary.click();
         WebElement checkboxInsuranceProtection = driver.findElement(By.xpath(CHECKBOX_INSURANCE_PROTECTION));
         actions.moveToElement(checkboxInsuranceProtection).build().perform();
-        if (checkboxInsuranceProtection.isSelected())
+        if (!checkboxInsuranceProtection.isSelected())
             checkboxInsuranceProtection.click();
         return this;
     }
@@ -86,12 +86,10 @@ public class LoanWithoutCollateralSalaryRshbPage extends BasePage {
     /**
      * проверка кредитной ставки и ежемесячного платежа
      */
-    public LoanWithoutCollateralSalaryRshbPage valuesCheck() {
-        assertEquals(ACTUAL_RATE_VALUE, driver.findElement(By.xpath(FIELD_RATE)).getText());
+    public LoanWithoutCollateralSalaryRshbInsuranceProtectionTest valuesCheck() {
         assertEquals(ACTUAL_PAY_VALUE, driver.findElement(By.xpath(FIELD_PAY)).getText());
+        assertEquals(ACTUAL_RATE_VALUE, driver.findElement(By.xpath(FIELD_RATE)).getText());
         return this;
     }
 
-
 }
-

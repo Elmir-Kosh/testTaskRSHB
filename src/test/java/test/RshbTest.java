@@ -4,11 +4,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 import pages.*;
 
-public class RshbTest extends BasePage {
-    MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-    LoanWithoutCollateralSalaryRshbPage lwcsr = PageFactory.initElements(driver, LoanWithoutCollateralSalaryRshbPage.class);
-    LoanWithoutCollateralSalaryRshbInsuranceProtectionPage lwcsrip = PageFactory.initElements(driver, LoanWithoutCollateralSalaryRshbInsuranceProtectionPage.class);
-    DepositsAndSavingsPage ds = PageFactory.initElements(driver, DepositsAndSavingsPage.class);
+public class RshbTest extends BaseTest {
+    MainTest mainPage = PageFactory.initElements(driver, MainTest.class);
+    LoanWithoutCollateralSalaryRshbTest lwcsr = PageFactory.initElements(driver, LoanWithoutCollateralSalaryRshbTest.class);
+    LoanWithoutCollateralSalaryRshbInsuranceProtectionTest lwcsrip = PageFactory.initElements(driver, LoanWithoutCollateralSalaryRshbInsuranceProtectionTest.class);
+    DepositsAndSavingsTest ds = PageFactory.initElements(driver, DepositsAndSavingsTest.class);
 
     @Test
     public void openSiteTest() {

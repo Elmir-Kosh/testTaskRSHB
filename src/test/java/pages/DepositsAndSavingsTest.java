@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import static org.testng.Assert.assertEquals;
 
-public class DepositsAndSavingsPage extends BasePage {
+public class DepositsAndSavingsTest extends BaseTest {
     private static final String DEPOSITS_AND_SAVINGS = "//a[contains(@class, \"b-page-head-menu-item\") and text() = \"Вклады и сбережения\"]";
     private static final String SAVINGS_ACCOUNT = "//div[@class=\"b-sections-menu-item-text -withlink\"]//a[text()=\"Накопительный счет\"]";
     private static final String CALCULATION_OF_PROFITABILITY = "//a[@class=\"b-btn\"]";
@@ -27,7 +27,7 @@ public class DepositsAndSavingsPage extends BasePage {
     /**
      * переход на страницу "расчет доходности по сбережениям"
      */
-    public DepositsAndSavingsPage depositsAndSavingsGet() {
+    public DepositsAndSavingsTest depositsAndSavingsGet() {
         click(By.xpath(DEPOSITS_AND_SAVINGS));
         Actions actions = new Actions(driver);
         WebElement savingsAccount = driver.findElement(By.xpath(SAVINGS_ACCOUNT));
@@ -40,7 +40,7 @@ public class DepositsAndSavingsPage extends BasePage {
     /**
      * проверка значений в таблице "Вклады и сбережения"
      */
-    public DepositsAndSavingsPage tableCheck() {
+    public DepositsAndSavingsTest tableCheck() {
         Actions actions = new Actions(driver);
         WebElement myBenefit = driver.findElement(By.xpath(EXPECTED_MY_BENEFIT));
         actions.moveToElement(myBenefit).click().build().perform();
